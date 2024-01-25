@@ -23,7 +23,7 @@ After analyzing the final-stage payload, it was possible to identify it as a cus
 In July 2022, an individual (handle **@sqcrxti0n**) approached me on Telegram by sending a message written in the Russian language along with an attached compressed file (**wallets-sorted.rar**):
 <br />
   
-![Screenshot from 2022-07-25 14-46-34.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_14-46-34.png)
+![Screenshot from 2022-07-25 14-46-34.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_14-46-34.png "Telegram Message")
 _Figure 1. Telegram Message_
 <br />
 Message:
@@ -32,7 +32,7 @@ Message:
 
 The message asks for checking logs — related to some collected “wallets” — inside a compressed file. Additionally, it says that the traffic was supposedly obtained from Google and Facebook (if the translation is correct):
 
-![Screenshot from 2022-07-25 20-04-19.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_20-04-19.png)
+![Screenshot from 2022-07-25 20-04-19.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_20-04-19.png "Message translation")
 _Figure 2. Message translation_
 <br />
 Taking a look at the file, here are some details about it:
@@ -43,30 +43,30 @@ Taking a look at the file, here are some details about it:
 
 After extraction, it shows a lot of folders named with `“US” + [a unique ID] + [a time stamp]`:
 
-![Screenshot from 2022-07-25 15-00-55.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-00-55.png)
+![Screenshot from 2022-07-25 15-00-55.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-00-55.png "wallets-sorted.rar structure")
 _Figure 3. wallets-sorted.rar structure_
 <br />
 Each folder contains a bunch of fake text files, logs, cookies, supposed cryptocurrency wallets, and more:
 
-![Screenshot from 2022-07-25 15-01-06.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-01-06.png)
+![Screenshot from 2022-07-25 15-01-06.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-01-06.png "Fake files")
 _Figure 4. Fake files_
 <br />
 
 As an example, the image below shows one of the text files which is related to the RedLine stealer threat:
 
-![Screenshot from 2022-07-25 15-07-44.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-07-44.png)
+![Screenshot from 2022-07-25 15-07-44.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-07-44.png "RedLine Stealer fake log")
 _Figure 5. RedLine Stealer fake log_
 <br />
 As a malware analyst, I once visited a group of Information stealer malware for sale on Telegram for research purposes **(I swear)**. So, I believe they got my Telegram account from there.
 
 Some of the folders have the same JS file on them (same hash) but with different names:
 
-![Screenshot from 2022-07-25 15-01-37.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-01-37.png)
+![Screenshot from 2022-07-25 15-01-37.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-01-37.png "Folder containing suspicious files")
 _Figure 6. Folder containing suspicious files_
 <br />
 And the Microsoft Word (.docx) files shown above contain only plain text strings on them:
 
-![Screenshot from 2022-07-25 15-05-03.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-05-03.png)
+![Screenshot from 2022-07-25 15-05-03.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-05-03.png "Fake .docx files contain plain text")
 _Figure 7. Fake .docx files contain plain text_
 
 Finally, the JS files contain an obfuscated and malicious script downloader which needs to be executed to start the attack.
@@ -82,7 +82,7 @@ File details:
 * **MD5:** 202622bcb60388ad2c74981b03763d5d
 * **SHA256:** 8ac98edab8a8a2e5b9feeb6c28b2a27b6258d557c0105f087aeeaea995aee2d3
 * **Content:**
-![Malicious script content](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_172238.png)
+![Malicious script content](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_172238.png "Malicious JS file content")
 _Figure 8. Malicious JS file content_
 <br />
 
@@ -125,13 +125,13 @@ The downloaded code is named with the date from the day after I received the mes
 
 The PowerShell script has a big Base64-encoded string that starts with “TVq”, which is transformed to “MZ” after decoding. Therefore, the string is a Base64-encoded Microsoft Windows PE file.
 
-![Screenshot from 2022-07-25 15-30-11.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-30-11.png)
+![Screenshot from 2022-07-25 15-30-11.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-30-11.png "Malicious PowerShell script downloaded")
 _Figure 9. Malicious PowerShell script downloaded_
 <br />
 
 At the end of the script, the string is decoded, copied to a file, and the PE file is then executed:
 
-![Screenshot from 2022-07-25 15-32-50.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-32-50.png)
+![Screenshot from 2022-07-25 15-32-50.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_15-32-50.png "End of the PowerShell script")
 _Figure 10. End of the PowerShell script_
 <br />
 
@@ -146,23 +146,23 @@ The PE is a VB.NET file with the following details:
 
 The decompiled code contains some interesting strings in its metadata:
 
-![Screenshot from 2022-07-25 19-22-26.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-22-26.png)
+![Screenshot from 2022-07-25 19-22-26.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-22-26.png ".NET PE decompiled code using the DnSPY tool")
 _Figure 11. .NET PE decompiled code using the DnSPY tool_
 <br />
 
 The PE’s resources have a lot of files containing **encrypted strings, from P0 to P31**. Additionally and curiously, it has some photos like below (The United Nations Secretary-General António Guterres and the President of Turkey, Tayyip Erdoğan) and two photos of a car and a house burning during the fire in Yosemite, California, U.S:
 
-![Screenshot from 2022-07-25 19-23-35.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-23-35.png)
+![Screenshot from 2022-07-25 19-23-35.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-23-35.png "Malware's resource image #1")
 _Figure 12. Malware's resource image #1_
 <br />
 
-![Screenshot from 2022-07-25 19-24-19.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-24-19.png)
+![Screenshot from 2022-07-25 19-24-19.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-24-19.png "Malware's resource image #2")
 _Figure 13. Malware's resource image #2_
 
 The image above was originally [taken](https://www.businessinsider.com/photos-explosive-wildfire-on-yosemite-border-6000-told-to-evacuate-2022-7) by Justin Sullivan, during the fire in Yosemite, California.
 <br /><br />
 
-![Screenshot from 2022-07-25 19-24-32.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-24-32.png)
+![Screenshot from 2022-07-25 19-24-32.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-24-32.png "Malware's resource image #3")
 _Figure 14. Malware's resource image #3_
 
 The image above was originally [taken](https://twitter.com/SwansonPhotog/status/1550733532112162816/photo/3) by a photographer (David Swanson) from Reuters, also during the fire in Yosemite, California.
@@ -178,37 +178,37 @@ _Figure 15. Malware's components_
 
 The malicious behavior was inserted on **Form1**. When initialized, it **gets the encrypted strings from the resources** (P0 through P31) and stores them on variables with names mixed with different alphabets:
 
-![Screenshot from 2022-07-25 19-27-09.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-27-09.png)
+![Screenshot from 2022-07-25 19-27-09.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-27-09.png "Third-stage - Form 1")
 _Figure 16. Third-stage - Form 1_
 <br />
 
 Then, all the strings are concatenated into a class property (Line 55):
 
-![Screenshot from 2022-07-25 19-27-28.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-27-28.png)
+![Screenshot from 2022-07-25 19-27-28.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-27-28.png "Third-stage - Form 1 - Concatenated strings from its resources")
 _Figure 17. Third-stage - Form 1 - Concatenated strings from its resources_
 <br />
 
 The resulting encrypted string has over 2 MB:
 
-![Screenshot 2022-12-12 184647.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_184647.png)
+![Screenshot 2022-12-12 184647.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_184647.png "Encrypted payload")
 _Figure 18. Encrypted payload_
 <br />
 
 When the program is executed, it runs the Form1 class, loading all its properties (including the concatenated encrypted strings), and runs a method called **NewMethod1** passing a decoded base64 string obtained after calling another method that receives the concatenated string and a string that is used to generate the decryption key.
 
-![Screenshot from 2022-07-25 19-29-55.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-29-55.png)
+![Screenshot from 2022-07-25 19-29-55.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-29-55.png "Payload being decrypted and loaded in the memory")
 _Figure 19. Payload being decrypted and loaded in the memory_
 <br />
 
 The **NewMethod1** simply returns an Assembly object:
 
-![Screenshot from 2022-07-25 19-29-16.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-29-16.png)
+![Screenshot from 2022-07-25 19-29-16.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-29-16.png "NewMethod1")
 _Figure 20. NewMethod1_
 <br />
 
 And the method that receives the concatenated encrypted string and the key decrypts it using AES256, ECB mode:
 
-![Screenshot 2022-12-12 182636.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_182636.png)
+![Screenshot 2022-12-12 182636.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_182636.png "Decryption function")
 _Figure 21. Decryption function_
 <br />
 
@@ -220,7 +220,7 @@ After computing the string’s MD5 hash, it gets different parts of its bytes an
 
 The decrypted payload (a VB.NET PE) is then executed directly into the memory and it has approximately 1.21 MB:
 
-![Screenshot 2022-12-12 185553.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_185553.png)
+![Screenshot 2022-12-12 185553.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_185553.png "Decrypted payload (Fourth-stage dropper)")
 _Figure 22. Decrypted payload (Fourth-stage dropper)_
 <br />
 
@@ -236,13 +236,13 @@ At this point, the attack starts to get more interesting.
 
 This payload also has embedded resources like the previous one (Third Stage) but instead of many resources, it has only **two encrypted resources**:
 
-![Screenshot 2022-12-12 190255.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_190255.png)
+![Screenshot 2022-12-12 190255.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_190255.png "Embedded resources")
 _Figure 23. Embedded resources_
 <br />
 
 When executed, the payload runs its main function:
 
-![Screenshot 2022-12-12 190132.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_190132.png)
+![Screenshot 2022-12-12 190132.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_190132.png "Main function overview")
 _Figure 24. Main function overview_
 <br />
 
@@ -252,7 +252,7 @@ Now, let’s analyze what this code does.
 
 2. Executes the first function named in the Chinese language:
 
-![Screenshot 2022-12-12 193833.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_193833.png)
+![Screenshot 2022-12-12 193833.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_193833.png "First function")
 _Figure 25. First function_
 <br />
 
@@ -265,7 +265,7 @@ Then, it gets the first encrypted resource and uses the same AES 256 (ECB Mode) 
 
 `C:\ProgramData\KJeporters\notepad.exe`
 
-![Screenshot 2022-12-12 195748.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_195748.png)
+![Screenshot 2022-12-12 195748.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_195748.png "Decrypted resource being written into a file")
 _Figure 26. Decrypted resource being written into a file_
 <br />
 
@@ -274,7 +274,7 @@ _Figure 26. Decrypted resource being written into a file_
 
 Next, it starts two cmd.exe processes:
 
-![Screenshot 2022-12-12 200152.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_200152.png)
+![Screenshot 2022-12-12 200152.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_200152.png "Spawning two processes")
 _Figure 27. Spawning two processes_
 <br />
 
@@ -316,13 +316,13 @@ And creates **scheduled tasks** that are executed every 1 hour:
 
 This function changes the Windows registry by adding the value below into the `Shell` sub-key as a persistence mechanism:
 
-![Screenshot 2022-12-12 204114.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_204114.png)
+![Screenshot 2022-12-12 204114.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_204114.png "Persistence mechanism #1")
 _Figure 28. Persistence mechanism #1_
 <br />
 
 Next, it also changes the value below to set a specific folder as the Windows Startup default folder, probably as a fallback in case the scheduled tasks don’t work:
 
-![Screenshot 2022-12-12 204327.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_204327.png)
+![Screenshot 2022-12-12 204327.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_204327.png "Persistence mechanism #2")
 _Figure 29. Persistence mechanism #2_
 <br />
 
@@ -348,7 +348,7 @@ This malware is the one written at:
 
 This malware has the same structure as the Third-Stage Dropper, with the same images as resources but the encrypted strings were divided into 33 parts (from P0 to P33) instead of 31 like before.
 
-![Screenshot 2022-12-12 211938.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_211938.png)
+![Screenshot 2022-12-12 211938.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_211938.png "Fifth-stage loader resources")
 _Figure 30. Fifth-stage loader resources_
 <br />
 
@@ -364,7 +364,7 @@ Since the Third-Stage malware was already analyzed before, we can focus on the f
 
 After decompiling the file, we can see that it’s obfuscated but this time there are no embedded resources:
 
-![Screenshot 2022-12-12 220740.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_220740.png)
+![Screenshot 2022-12-12 220740.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_220740.png "Final-stage payload")
 _Figure 31. Final-stage payload_
 <br />
 
@@ -383,7 +383,7 @@ Then, the code execution happens as follows:
         
         If it’s being debugged, it executes the base64-encoded (`Y21kLmV4ZSAvYyBwaW5nIDAgLW4gMiAmIGRlbCA=`) command `cmd.exe /c ping 0 -n 2 & del` that deletes itself from the disk and then terminates its execution.
         
-        ![Screenshot 2022-12-12 225133.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_225133.png)
+        ![Screenshot 2022-12-12 225133.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_225133.png "Final-stage payload's anti-debugging function")
         _Figure 32. Final-stage payload's anti-debugging function_
         
 3. Starts a thread that keeps trying to connect to "[https://twitter.com/](https://twitter.com/)"
@@ -422,7 +422,7 @@ Then, the code execution happens as follows:
 
 After debugging the malware’s execution, I noticed that it frequently uses some properties from the class below:
 
-![Screenshot 2022-12-12 220922.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_220922.png)
+![Screenshot 2022-12-12 220922.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-12_220922.png "Malware settings")
 _Figure 33. Malware settings_
 <br />
 
@@ -450,31 +450,31 @@ Now we know that this malware is probably a backdoor, a botnet, or a RAT.
 
 After searching for specific IOCs and strings used by the malware stages during the attack, I found some interesting matches on GitHub pointing to the **LimeRAT** malware:
 
-![Screenshot 2022-12-13 142926.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_142926.png)
+![Screenshot 2022-12-13 142926.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_142926.png "LimeRAT evidence")
 _Figure 34. LimeRAT evidence_
 <br />
 
 LimeRAT is [developed](https://github.com/NYAN-x-CAT/Lime-RAT) in Visual Basic .NET and contains many built-in modules such as encrypted communication with its C2, spreading mechanism via USB drivers, anti-VM/analysis techniques, and many additional plugins such as ransomware capability, XMR (Monero) mining, DDoS attacks, Crypto Stealing (by changing the cryptocurrency wallet addresses on the clipboard), and many more:
 
-![Screenshot 2022-12-13 143325.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_143325.png)
+![Screenshot 2022-12-13 143325.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_143325.png "LimeRAT open-source project on GitHub")
 _Figure 35. LimeRAT open-source project on GitHub_
 <br />
 
 Moreover, looking at LimeRAT’s project, there is a class very similar to the settings we saw in the final-stage malware:
 
-![Screenshot 2022-12-13 143507.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_143507.png)
+![Screenshot 2022-12-13 143507.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_143507.png "LimeRAT settings source-code")
 _Figure 36. LimeRAT settings source-code_
 <br />
 
 The encryption/decryption process is exactly the same:
 
-![Screenshot 2022-12-13 143832.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_143832.png)
+![Screenshot 2022-12-13 143832.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_143832.png "LimeRAT encryption/decryption code")
 _Figure 37. LimeRAT encryption/decryption code_
 <br />
 
 As well as the mechanism used for generating the unique ID:
 
-![Screenshot 2022-12-13 144716.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_144716.png)
+![Screenshot 2022-12-13 144716.png](/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_2022-12-13_144716.png "LimeRAT UUID generation code")
 _Figure 38. LimeRAT UUID generation code_
 <br />
 
@@ -548,4 +548,4 @@ It was not possible to attribute this attack to any group, so the motivation is 
 
 <hr />
 
-<a href="#">Back to the top</a>
+<a alt="Back to the top" href="#">Back to the top</a>
