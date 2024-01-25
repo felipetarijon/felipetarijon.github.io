@@ -13,7 +13,6 @@ It is important to clarify that **ALL** opinions here are my **OWN** and **NOT**
 
 ---
 
-<a alt="projects" name="projects"></a>
 
 ## Projects
 
@@ -21,7 +20,6 @@ It is important to clarify that **ALL** opinions here are my **OWN** and **NOT**
 
 ---
 
-<a alt="media-coverage" name="media-coverage"></a>
 
 ## Media Coverage
 
@@ -31,7 +29,6 @@ It is important to clarify that **ALL** opinions here are my **OWN** and **NOT**
 
 ---
 
-<a alt="contact" name="contact"></a>
 
 ## Contact
 
