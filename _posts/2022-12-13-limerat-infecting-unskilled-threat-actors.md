@@ -171,7 +171,7 @@ The image above was originally [taken](https://twitter.com/SwansonPhotog/status/
 Regarding its components, the malware has a lot of Forms to probably disguise itself as a legitimate application:
 
 <div align="center">
-    <img src="/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-26-10.png" />
+    <img alt="Malware's components" src="/assets/img/limerat-infecting-unskilled-threat-actors/Screenshot_from_2022-07-25_19-26-10.png" />
 </div>
 _Figure 15. Malware's components_
 <br />
