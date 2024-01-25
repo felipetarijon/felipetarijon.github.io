@@ -11,13 +11,10 @@ This is my own cheatsheet splitted in different topics with chunks of useful cod
 {: .prompt-info }
 
 ## Table of contents
-1. <a alt="#toc-01" href="#toc-01">PowerShell</a>
-2. <a alt="#toc-02" href="#toc-02">Malware Debugging</a>
+1. PowerShell
+2. Malware Debugging
 
 -----
-
-
-<a alt="toc-01" name="toc-01"></a>
 
 ## 1. PowerShell
 
@@ -40,9 +37,6 @@ $action = {
 
 Register-ObjectEvent $watcher 'Created' -Action $action
 ```
-
-
-<a alt="toc-02" name="toc-02"></a>
 
 ## 2. Malware Debugging
 
