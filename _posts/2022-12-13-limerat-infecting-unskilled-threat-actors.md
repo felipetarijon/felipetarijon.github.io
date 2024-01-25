@@ -1,6 +1,7 @@
 ---
 layout: post
 title: LimeRAT Malware Is Used For Targeting Unskilled Threat Actors
+author: felipetarijon
 date: 2022-12-13 04:25:00
 categories: [malware-analysis]
 tags: [limerat]
