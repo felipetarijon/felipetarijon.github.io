@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-icon: fas fa-info-circle
+icon: fas fa-file-text
 order: 2
 ---
 
@@ -13,12 +13,13 @@ This is my own cheatsheet splitted in different topics with chunks of useful cod
 ## Table of contents
 1. PowerShell
 2. Malware Debugging
+3. Redirect Malware Connection
 
 -----
 
 ## 1. PowerShell
 
-* Get file's hashes via PowerShell:  
+* Getting file's hashes via PowerShell:  
 `Get-FileHash -Path file.exe -Algorithm MD5 | Format-List`
   
   
@@ -45,3 +46,12 @@ General manual unpacking breakpoints:
 * VirtualProtect
 * ResumeThread
 * VirtualAlloc (on its return)
+
+## 3. Redirect Malware Connection
+
+This is useful for when I need to control a malware using its C2, making it to easily connect to wherever I need, without changing the malware configuration (i.e: patching the binary).
+1. Open cmd.exe as Administrator
+2. Execute the command below (change listen/connect address/port values):
+```bash
+netsh interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=6651 connectaddress=192.168.232.140 connectport=6651
+```
