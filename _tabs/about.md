@@ -5,9 +5,9 @@ order: 1
 ---
 
 
-Hey, welcome to my blog. My name is <a alt="https://www.linkedin.com/in/felipetarijon/" href="https://www.linkedin.com/in/felipetarijon/" target="_blank">Felipe Tarijon</a>, I'm from Brazil and I am a Malware Analyst currently working for <a alt="https://immunityinc.com/" href="https://immunityinc.com/" target="_blank">Immunity Inc.</a>, a company owned by <a alt="https://appgate.com/" href="https://appgate.com/" target="_blank">Appgate</a> <a alt="https://finance.yahoo.com/quote/APGT?p=APGT" href="https://finance.yahoo.com/quote/APGT?p=APGT" target="_blank">(APGT)</a>.
+Hey, welcome to my blog. My name is <a alt="https://www.linkedin.com/in/felipetarijon/" href="https://www.linkedin.com/in/felipetarijon/" target="_blank">Felipe Tarijon</a>, I'm from Brazil and I am a Malware Analyst currently working for <a alt="https://www.itau.com.br/" href="https://www.itau.com.br/" target="_blank">Itaú.</a>, the biggest bank in Brazil <a alt="https://finance.yahoo.com/quote/ITUB4?p=ITUB4" href="https://finance.yahoo.com/quote/ITUB4?p=ITUB4" target="_blank">(ITUB4)</a>.
   
-This blog is a place to drop my thoughts related to malware analysis, cybersecurity, hacking and to register my career progression. I will post my researches, analysis, study resources, and who knows what else.
+This blog is a place to drop my thoughts related to malware analysis, cybersecurity, hacking and to register my career progression. I will post my researches, analysis, study resources, and whatnot.
 
 It is important to clarify that **ALL** opinions here are my **OWN** and **NOT** the views of my employer.
 
